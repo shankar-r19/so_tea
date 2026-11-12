@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>so tea — Preorder | First 100 get 30% off</title>
+<meta name="description" content="so tea: luxury underwear and loungewear made with MOFA fabric technology. Fresh, soft and made for cozy mornings. Preorder now — the first 100 customers get 30% off.">
+<meta property="og:title" content="so tea — fresh, soft, steeped in comfort">
+<meta property="og:description" content="Preorder now. The first 100 customers get 30% off.">
+<meta property="og:image" content="images/flatlay.jpg">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --milk:#F7F1E6; --oat:#EFE6D6; --linen:#E6DAC5;
+    --earlgrey:#6B6F76; --matcha:#8BA35A; --rooibos:#8E3B2A;
+    --chamomile:#D8C062; --amber:#A8692F; --sage:#A7B791;
+    --pea:#A9B8E8; --ink:#3A2A22; --muted:#7A6A5E; --line:rgba(58,42,34,.12);
+    --r:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Quicksand",system-ui,sans-serif;background:var(--milk);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit}
+  .wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+  .serif,h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400}
+  .eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:.74rem;font-weight:600;color:var(--amber)}
+
+  /* offer bar */
+  .bar{background:var(--ink);color:var(--milk);text-align:center;font-size:.88rem;padding:9px 16px}
+  .bar b{color:var(--chamomile);font-weight:600}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:30;background:rgba(247,241,230,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  .logo{display:inline-flex;flex-direction:column;text-decoration:none;font-weight:300;color:#58565A;line-height:1}
+  .logo span{font-size:1.75rem}
+  .logo::after{content:"";width:2.4rem;height:2px;background:var(--pea);margin-top:.4rem}
+  .navlinks{display:flex;gap:26px;align-items:center;font-size:.93rem}
+  .navlinks a{text-decoration:none;color:var(--muted)}
+  .navlinks a:hover{color:var(--ink)}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none}}
+
+  .btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:99px;background:var(--ink);color:var(--milk);transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px);background:var(--rooibos)}
+  .btn.sm{padding:9px 18px;font-size:.88rem}
+  .btn.ghost{background:none;color:var(--ink);border:1px solid var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--milk)}
+
+  /* hero */
+  .hero{padding:56px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+  h1{font-size:clamp(2.6rem,5.6vw,4.4rem);line-height:1.03;margin:14px 0 20px}
+  h1 em{color:var(--matcha);font-style:italic}
+  .lede{font-size:1.1rem;color:var(--muted);max-width:32em}
+  .offer{margin:28px 0 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .pill{background:var(--oat);border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-size:.9rem}
+  .pill b{color:var(--rooibos)}
+  .progress{margin-top:22px;max-width:380px}
+  .progress small{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-bottom:6px}
+  .track{height:8px;background:var(--linen);border-radius:99px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,var(--matcha),var(--amber));border-radius:99px;width:0;transition:width 1.4s ease}
+  .hero-imgs{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:min(560px,70vh)}
+  .hero-imgs img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+  .hero-imgs img:first-child{grid-row:1/3}
+
+  /* trust strip */
+  .strip{border-block:1px solid var(--line);background:var(--oat)}
+  .strip ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:20px 0;text-align:center;font-size:.92rem;color:var(--muted)}
+  .strip li b{display:block;color:var(--ink);font-weight:600}
+
+  section{padding:96px 0}
+  .head{max-width:620px;margin-bottom:44px}
+  .head.c{margin-inline:auto;text-align:center}
+  h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-top:10px}
+  .head p{color:var(--muted);margin-top:14px}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .story-grid img{border-radius:var(--r);width:100%;aspect-ratio:4/5;object-fit:cover}
+  .story blockquote{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.25;color:var(--rooibos);margin:16px 0 22px}
+  .story p{color:var(--muted)}
+  .story p+p{margin-top:1em}
+
+  /* pillars */
+  .pillars{background:var(--oat)}
+  .p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pillar{background:var(--milk);border-radius:var(--r);padding:28px 24px}
+  .pillar .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;margin-bottom:16px}
+  .pillar h3{font-size:1.5rem;font-weight:500;margin-bottom:6px}
+  .pillar p{color:var(--muted);font-size:.94rem}
+
+  /* MOFA */
+  .mofa{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .mofa img{border-radius:var(--r);aspect-ratio:1;object-fit:cover;width:100%}
+  .mofa ul{list-style:none;margin-top:24px;display:grid;gap:14px}
+  .mofa li{display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .mofa li::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:var(--matcha);margin-top:8px}
+  .mofa li b{display:block}
+  .mofa li span{color:var(--muted);font-size:.94rem}
+
+  /* morning gallery */
+  .morning{background:var(--ink);color:var(--milk)}
+  .morning .head p{color:#CDBFAF}
+  .morning .eyebrow{color:var(--chamomile)}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .gallery figure{position:relative;border-radius:16px;overflow:hidden}
+  .gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .6s}
+  .gallery figure:hover img{transform:scale(1.04)}
+  .gallery figcaption{position:absolute;left:12px;bottom:12px;background:rgba(247,241,230,.92);color:var(--ink);font-size:.8rem;padding:4px 12px;border-radius:99px}
+
+  /* collection */
+  .c-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .tea{background:#fff;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+  .tea .sw{height:120px;position:relative}
+  .tea .sw::after{content:"so tea";position:absolute;left:0;right:0;top:0;height:30px;display:flex;align-items:center;padding-left:16px;font-family:"Cormorant Garamond",serif;font-size:1rem;color:#555;background:var(--band)}
+  .tea .body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .tea h3{font-size:1.55rem;font-weight:500}
+  .tea .notes{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:2px 0 8px}
+  .tea p{color:var(--muted);font-size:.92rem;flex:1}
+  .price{margin-top:14px;display:flex;align-items:baseline;gap:10px}
+  .price s{color:var(--muted);font-size:.95rem}
+  .price b{font-size:1.25rem;font-weight:600}
+  .price em{font-style:normal;font-size:.75rem;background:var(--matcha);color:#fff;padding:2px 8px;border-radius:99px}
+  .pick{margin-top:14px;background:var(--milk);border:1px solid var(--line);border-radius:99px;padding:10px;font:inherit;font-weight:600;cursor:pointer;color:var(--ink)}
+  .pick:hover{background:var(--ink);color:var(--milk)}
+
+  /* preorder */
+  .preorder{padding-top:0}
+  .po{display:grid;grid-template-columns:1fr 1.1fr;border-radius:28px;overflow:hidden;background:var(--oat);border:1px solid var(--line)}
+  .po-img{background:url(images/flatlay.jpg) center/cover;min-height:420px}
+  .po-form{padding:48px 44px}
+  .po-form h2{margin-top:8px}
+  .po-form>p{color:var(--muted);margin:10px 0 24px}
+  form{display:grid;gap:14px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{font-size:.82rem;font-weight:600;display:block;margin-bottom:6px}
+  input,select{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--milk);color:var(--ink)}
+  input:focus,select:focus{outline:2px solid var(--matcha);outline-offset:1px}
+  .colours{display:flex;gap:10px;flex-wrap:wrap}
+  .colours label{margin:0;cursor:pointer}
+  .colours input{position:absolute;opacity:0;width:0}
+  .colours span{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:7px 14px 7px 8px;font-weight:500;background:var(--milk)}
+  .colours i{width:18px;height:18px;border-radius:50%;display:inline-block}
+  .colours input:checked+span{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+  .colours input:focus-visible+span{outline:2px solid var(--matcha)}
+  .fine{font-size:.8rem;color:var(--muted)}
+  .done{display:none;text-align:center;padding:24px 0}
+  .done h3{font-size:2rem}
+  .done p{color:var(--muted);margin-top:8px}
+
+  /* faq */
+  .faq{max-width:760px;margin-inline:auto}
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::after{content:"+";font-size:1.3rem;line-height:1;color:var(--amber)}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin-top:10px}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;font-size:.88rem;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+
+  /* sticky mobile CTA */
+  .mcta{display:none}
+  @media(max-width:760px){
+    .mcta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;text-align:center;box-shadow:0 12px 30px -10px rgba(58,42,34,.5)}
+    footer{padding-bottom:90px}
+  }
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:960px){
+    .hero-grid,.story-grid,.mofa,.po{grid-template-columns:1fr}
+    .hero-imgs{height:420px}
+    .p-grid,.c-grid,.gallery{grid-template-columns:repeat(2,1fr)}
+    .strip ul{grid-template-columns:repeat(2,1fr)}
+    .po-img{min-height:280px}
+  }
+  @media(max-width:560px){
+    section{padding:64px 0}
+    .p-grid,.c-grid{grid-template-columns:1fr}
+    .row{grid-template-columns:1fr}
+    .po-form{padding:32px 20px}
+    .hero-imgs{height:340px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="bar">Preorders are open — <b>the first 100 customers get 30% off</b> their first order.</div>
+
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a class="logo" href="#top" aria-label="so tea home"><span>so tea</span></a>
+    <div class="navlinks">
+      <a href="#story">Our story</a>
+      <a href="#mofa">MOFA fabric</a>
+      <a href="#collection">The collection</a>
+      <a href="#faq">FAQ</a>
+      <a href="#preorder" class="btn sm" data-cta="nav">Preorder</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">Underwear & loungewear · now taking preorders</p>
+        <h1>Fresh, soft, and <em>steeped</em> in comfort.</h1>
+        <p class="lede">Luxury underwear and loungewear made with MOFA fabric technology, for slow mornings, long days and every moment you want to feel clean, calm and at home in your own body.</p>
+        <div class="offer">
+          <a href="#preorder" class="btn" data-cta="hero">Reserve yours — 30% off</a>
+          <span class="pill">Founding 100 · <b>30% off</b></span>
+        </div>
+        <div class="progress" aria-live="polite">
+          <small><span id="claimed-label">Founding spots claimed</span><span id="claimed-count"></span></small>
+          <div class="track"><div class="fill" id="fill"></div></div>
+        </div>
+      </div>
+      <div class="hero-imgs reveal">
+        <img src="images/lounge.jpg" alt="Man relaxing on a sofa in an amber so tea lounge set with a glass teapot">
+        <img src="images/waistband.jpg" alt="Close-up of a pale green so tea waistband above linen trousers">
+        <img src="images/rooibos-product.jpg" alt="Rooibos-red so tea trunk with a blush waistband">
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <ul class="wrap">
+      <li><b>MOFA fabric</b>engineered for freshness</li>
+      <li><b>Luxury-soft</b>high-end, breathable knit</li>
+      <li><b>Tea-dyed palette</b>six calming shades</li>
+      <li><b>No payment today</b>reserve in 30 seconds</li>
+    </ul>
+  </div>
+
+  <!-- STORY -->
+  <section id="story">
+    <div class="wrap story-grid">
+      <img class="reveal" src="images/matcha-model.jpg" alt="Man resting on a bed in matcha-green so tea trunks and a cream knit cardigan" loading="lazy">
+      <div class="story reveal">
+        <p class="eyebrow">Our story</p>
+        <blockquote>Personal hygiene isn’t just about being clean. It’s about comfort, confidence, and feeling good in your own body.</blockquote>
+        <p>so tea began with a simple ritual: the first cup of the morning. The quiet before the day starts. Warm hands, soft light, nowhere to be yet. That feeling of being safe, unhurried and entirely yourself.</p>
+        <p>We wanted to make clothes that hold that feeling all day. Underwear and loungewear closest to your skin, made from a luxurious fabric that stays fresh, breathes easily and feels like a deep exhale. Every piece is named after a tea and dyed in its colour, because the things we keep closest should feel like a small comfort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="wrap">
+      <div class="head c reveal">
+        <p class="eyebrow">What we stand for</p>
+        <h2>Four things you’ll feel, every time.</h2>
+      </div>
+      <div class="p-grid">
+        <div class="pillar reveal">
+          <div class="ic" style="background:#E6ECD8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5E7445" stroke-width="1.6"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z"/></svg></div>
+          <h3>Freshness</h3><p>MOFA fabric technology helps you stay fresh from first sip to last light.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="ic" style="background:#F6EBCB"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8692F" stroke-width="1.6"><path d="M4 12a8 8 0 0 0 16 0"/><path d="M8 8c0-2 1-3 1-5M12 8c0-2 1-3 1-5M16 8c0-2 1-3 1-5"/></svg></div>
+          <h3>Cozy mornings</h3><p>Loungewear made for slow starts, warm cups and staying in a little longer.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="ic" style="background:#EDD6CF"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8E3B2A" stroke-width="1.6"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></div>
+          <h3>Closeness</h3><p>The layer nearest to you should feel gentle, familiar and kind to your skin.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="ic" style="background:#E4E1E6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B6F76" stroke-width="1.6"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/></svg></div>
+          <h3>Safety</h3><p>Breathable, considered and made to give you quiet confidence all day long.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOFA -->
+  <section id="mofa">
+    <div class="wrap mofa">
+      <div class="reveal">
+        <p class="eyebrow">The fabric</p>
+        <h2>MOFA technology, woven into luxury.</h2>
+        <p style="color:var(--muted);margin-top:14px">Every so tea piece is made from a high-end fabric enhanced with MOFA technology, so the softness you feel in the morning is still there in the evening.</p>
+        <ul>
+          <li><div><b>Stays fresh</b><span>Designed to keep you feeling clean and fresh through the whole day.</span></div></li>
+          <li><div><b>Breathes easily</b><span>A light, airy knit that lets your skin breathe, at home or on the move.</span></div></li>
+          <li><div><b>Luxury-soft hand feel</b><span>Smooth and gentle against the skin, with a waistband that never digs.</span></div></li>
+          <li><div><b>Made to last</b><span>Holds its colour, shape and softness wash after wash.</span></div></li>
+        </ul>
+      </div>
+      <img class="reveal" src="images/flatlay-wide.jpg" alt="Four folded so tea trunks in earl grey, matcha, rooibos and chamomile beside a cup of tea" loading="lazy">
+    </div>
+  </section>
+
+  <!-- MORNING GALLERY -->
+  <section class="morning">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">Slow mornings</p>
+        <h2>Made for the hours that are yours.</h2>
+        <p>Soft light. A warm cup. Nowhere to be just yet.</p>
+      </div>
+      <div class="gallery">
+        <figure class="reveal"><img src="images/earlgrey-model.jpg" alt="Man by a sunlit window in earl grey so tea trunks" loading="lazy"><figcaption>Earl Grey</figcaption></figure>
+        <figure class="reveal"><img src="images/matcha-model.jpg" alt="Man relaxing in bed in matcha so tea trunks" loading="lazy"><figcaption>Matcha</figcaption></figure>
+        <figure class="reveal"><img src="images/rooibos-model.jpg" alt="Man seated in a cream tee and rooibos so tea trunks" loading="lazy"><figcaption>Rooibos</figcaption></figure>
+        <figure class="reveal"><img src="images/chamomile-model.jpg" alt="Man stretching in bed in chamomile yellow so tea trunks" loading="lazy"><figcaption>Chamomile</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section id="collection">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow">The Tea Collection</p>
+        <h2>Six blends. Choose your cup.</h2>
+        <p>Founding prices shown. Reserve now and pay nothing until your order is ready to ship.</p>
+      </div>
+      <div class="c-grid" id="teas"></div>
+    </div>
+  </section>
+
+  <!-- PREORDER -->
+  <section class="preorder" id="preorder">
+    <div class="wrap">
+      <div class="po reveal">
+        <div class="po-img" role="img" aria-label="so tea trunks folded on linen with loose-leaf tea"></div>
+        <div class="po-form">
+          <div id="po-fields">
+            <p class="eyebrow">Founding 100</p>
+            <h2>Reserve yours at 30% off.</h2>
+            <p>No payment today. We’ll email you before launch to confirm your order and lock in your founding price.</p>
+            <!--
+              To collect real responses, create a free form at https://formspree.io
+              and replace YOUR_FORM_ID below. Until then, entries are logged in the browser only.
+            -->
+            <form id="po-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <div class="row">
+                <div><label for="name">First name</label><input id="name" name="name" autocomplete="given-name" required></div>
+                <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              </div>
+              <div>
+                <label id="colour-label">Your blend</label>
+                <div class="colours" role="radiogroup" aria-labelledby="colour-label" id="colour-opts"></div>
+              </div>
+              <div class="row">
+                <div><label for="product">Piece</label>
+                  <select id="product" name="product">
+                    <option>Trunk</option><option>Boxer brief</option><option>Lounge set</option><option>Mixed 3-pack</option>
+                  </select></div>
+                <div><label for="size">Size</label>
+                  <select id="size" name="size"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option></select></div>
+              </div>
+              <input type="hidden" name="source" id="source">
+              <button class="btn" type="submit" style="width:100%" data-cta="form">Reserve my 30% off</button>
+              <p class="fine">By reserving you agree to hear from so tea about your preorder. Unsubscribe anytime.</p>
+            </form>
+          </div>
+          <div class="done" id="done" aria-live="polite">
+            <h3>You’re on the list.</h3>
+            <p>Thank you for being one of our first. Your founding 30% off is reserved, and we’ll be in touch before launch. Go and pour yourself a cup.</p>
+            <p style="margin-top:18px"><a class="btn ghost" id="share" href="#">Share with a friend</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="head c reveal"><p class="eyebrow">Questions</p><h2>Before you pour.</h2></div>
+      <div class="faq">
+        <details><summary>Do I pay anything now?</summary><p>No. Reserving is free. Before launch we’ll email you a link to confirm your order at your founding price.</p></details>
+        <details><summary>How does the 30% off work?</summary><p>The first 100 people to reserve get 30% off their first order. It’s tied to the email address you reserve with.</p></details>
+        <details><summary>What is MOFA technology?</summary><p>MOFA is the fabric technology behind every so tea piece. It’s built into a premium, breathable knit to help you stay fresh and comfortable all day.</p></details>
+        <details><summary>When will orders ship?</summary><p>We’re finalising production now. Founding members will be the first to hear our launch date and the first to receive their orders.</p></details>
+        <details><summary>How do I care for so tea?</summary><p>Wash cool at 30°C with a gentle detergent, lay flat to dry, and skip the tumble dryer. Treat it like good tea: gently.</p></details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><span>so tea</span></a>
+    <span>© <span id="yr"></span> so tea · Fresh, soft, steeped in comfort.</span>
+    <a href="mailto:hello@sotea.example">hello@sotea.example</a>
+  </div>
+</footer>
+
+<a href="#preorder" class="btn mcta" data-cta="sticky">Reserve yours — 30% off</a>
+
+<script>
+  /* ============ SETTINGS — edit these ============ */
+  const SPOTS_TOTAL   = 100;
+  const SPOTS_CLAIMED = 0;   // update by hand as real reservations come in
+  const FULL_PRICE    = { "Trunk": 32, "Boxer brief": 34, "Lounge set": 89, "Mixed 3-pack": 85 };
+  /* =============================================== */
+
+  const teas = [
+    {name:"Earl Grey", hex:"#6B6F76", band:"#D9D6DC", notes:"calm · grounded", desc:"A quiet, steady grey for days that need composure."},
+    {name:"Matcha",    hex:"#8BA35A", band:"#DDE6C8", notes:"fresh · restorative", desc:"Soft green for clear heads and fresh starts."},
+    {name:"Rooibos",   hex:"#8E3B2A", band:"#F2C9B8", notes:"warm · comforting", desc:"A deep, cosy red that feels like coming home."},
+    {name:"Chamomile", hex:"#D8C062", band:"#F6EBCB", notes:"gentle · sunny", desc:"Golden and gentle, for lazy, light-filled mornings."},
+    {name:"Amber",     hex:"#A8692F", band:"#F0DFC9", notes:"rich · unhurried", desc:"Our lounge shade, made for long weekends in."},
+    {name:"Sage",      hex:"#A7B791", band:"#E8EEDD", notes:"soft · balanced", desc:"A muted green that pairs with everything."}
+  ];
+  const off = p => (p * 0.7).toFixed(2).replace(/\.00$/,"");
+
+  document.getElementById("teas").innerHTML = teas.map(t => `
+    <article class="tea reveal">
+      <div class="sw" style="background:${t.hex};--band:${t.band}"></div>
+      <div class="body">
+        <h3>${t.name}</h3>
+        <p class="notes">${t.notes}</p>
+        <p>${t.desc}</p>
+        <div class="price"><s>£${FULL_PRICE.Trunk}</s><b>£${off(FULL_PRICE.Trunk)}</b><em>−30%</em></div>
+        <button class="pick" data-tea="${t.name}" data-cta="card">Reserve ${t.name}</button>
+      </div>
+    </article>`).join("");
+
+  document.getElementById("colour-opts").innerHTML = teas.map((t,i) => `
+    <label><input type="radio" name="colour" value="${t.name}" ${i===1?"checked":""}><span><i style="background:${t.hex}"></i>${t.name}</span></label>`).join("");
+
+  // pick from collection -> jump to form with colour selected
+  document.getElementById("teas").addEventListener("click", e => {
+    const b = e.target.closest(".pick"); if(!b) return;
+    const r = document.querySelector(`input[name=colour][value="${b.dataset.tea}"]`);
+    if(r) r.checked = true;
+    document.getElementById("preorder").scrollIntoView({behavior:"smooth"});
+    setTimeout(() => document.getElementById("name").focus({preventScroll:true}), 600);
+  });
+
+  // spots progress
+  const claimed = Math.min(SPOTS_CLAIMED, SPOTS_TOTAL);
+  document.getElementById("claimed-count").textContent = `${claimed} / ${SPOTS_TOTAL}`;
+  if(claimed === 0) document.getElementById("claimed-label").textContent = "Founding spots — be one of the first";
+  setTimeout(() => document.getElementById("fill").style.width = Math.max(claimed/SPOTS_TOTAL*100, 2) + "%", 300);
+
+  // simple demand-validation tracking (works with Plausible / GA4 if you add them)
+  const params = new URLSearchParams(location.search);
+  document.getElementById("source").value = params.get("utm_source") || document.referrer || "direct";
+  function track(event, props={}){
+    try{ if(window.plausible) plausible(event,{props}); }catch(e){}
+    try{ if(window.gtag) gtag("event", event, props); }catch(e){}
+  }
+  document.addEventListener("click", e => {
+    const c = e.target.closest("[data-cta]"); if(c) track("cta_click", {location:c.dataset.cta});
+  });
+
+  // form submit
+  const form = document.getElementById("po-form");
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const p = data.get("product");
+    data.append("founding_price", "£" + off(FULL_PRICE[p]));
+    track("preorder", {colour:data.get("colour"), product:p, size:data.get("size")});
+    if(!form.action.includes("YOUR_FORM_ID")){
+      try{ await fetch(form.action,{method:"POST",body:data,headers:{Accept:"application/json"}}); }catch(err){}
+    } else {
+      console.log("Preorder (connect Formspree to save):", Object.fromEntries(data));
+    }
+    document.getElementById("po-fields").style.display = "none";
+    document.getElementById("done").style.display = "block";
+  });
+
+  document.getElementById("share").addEventListener("click", e => {
+    e.preventDefault();
+    const d = {title:"so tea", text:"so tea preorders are open — the first 100 get 30% off.", url:location.href};
+    if(navigator.share) navigator.share(d).catch(()=>{});
+    else navigator.clipboard?.writeText(location.href).then(() => e.target.textContent = "Link copied");
+  });
+
+  // reveal
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+  }), {threshold:.1});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
