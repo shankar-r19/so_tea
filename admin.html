@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>so tea admin</title>
+  <style>
+    body{font-family:system-ui,sans-serif;background:#f6efe6;color:#1d1d1d;padding:40px 20px}
+    .wrap{max-width:980px;margin:0 auto}
+    .card{background:#fff;padding:24px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    input,button{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid #d7d0c9;width:100%;margin-top:10px}
+    button{background:#3a2a22;color:#fff;border:none;cursor:pointer}
+    table{width:100%;border-collapse:collapse;margin-top:20px}
+    th,td{padding:10px 12px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+    .hidden{display:none}
+    .status{margin-top:10px;font-size:.95rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="login-card">
+      <h2>so tea admin</h2>
+      <input id="username" placeholder="Username" />
+      <input id="password" type="password" placeholder="Password" />
+      <button id="login-btn">Login</button>
+      <div id="login-status" class="status"></div>
+    </div>
+
+    <div class="card hidden" id="records-card">
+      <h2>Preorders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Colour</th>
+            <th>Product</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody id="records-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const loginCard = document.getElementById('login-card');
+    const recordsCard = document.getElementById('records-card');
+    const statusEl = document.getElementById('login-status');
+    const state = { token: null };
+
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      statusEl.textContent = 'Checking credentials...';
+
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      const payload = await res.json();
+      if (!res.ok) {
+        statusEl.textContent = payload.message || 'Login failed.';
+        return;
+      }
+
+      state.token = btoa(username + ':' + password);
+      loginCard.classList.add('hidden');
+      recordsCard.classList.remove('hidden');
+      loadRecords();
+    }
+
+    async function loadRecords() {
+      const res = await fetch('/api/preorders', {
+        headers: { Authorization: 'Basic ' + state.token }
+      });
+
+      if (!res.ok) {
+        statusEl.textContent = 'Session expired. Please log in again.';
+        loginCard.classList.remove('hidden');
+        recordsCard.classList.add('hidden');
+        return;
+      }
+
+      const data = await res.json();
+      const body = document.getElementById('records-body');
+      body.innerHTML = data.map(item => `
+        <tr>
+          <td>${item.name || '—'}</td>
+          <td>${item.email || '—'}</td>
+          <td>${item.colour || '—'}</td>
+          <td>${item.product || '—'}</td>
+          <td>${item.size || '—'}</td>
+          <td>${item.preorder_price || '—'}</td>
+          <td>${item.created_at || '—'}</td>
+        </tr>
+      `).join('');
+    }
+
+    document.getElementById('login-btn').addEventListener('click', login);
+  </script>
+</body>
+</html>
