@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>so tea — Preorder | First 100 get 30% off</title>
-<meta name="description" content="so tea: luxury underwear and loungewear made with MOFA fabric technology. Fresh, soft and made for cozy mornings. Preorder now — the first 100 customers get 30% off.">
+<title>so tea — Preorder | 30% off</title>
+<meta name="description" content="so tea: luxury underwear and loungewear made with MOFA fabric technology. Fresh, soft and made for cozy mornings. Preorder now — save 30% off your first order.">
 <meta property="og:title" content="so tea — fresh, soft, steeped in comfort">
-<meta property="og:description" content="Preorder now. The first 100 customers get 30% off.">
+<meta property="og:description" content="Preorder now. Save 30% off your first order.">
 <meta property="og:image" content="images/flatlay.jpg">
 <link rel="icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +24,8 @@
   html{scroll-behavior:smooth}
   body{font-family:"Quicksand",system-ui,sans-serif;background:var(--milk);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
   img{display:block;max-width:100%;height:auto}
+  img.face-hidden{position:relative;filter:blur(8px) saturate(.7) brightness(.96)}
+  img.face-hidden::after{content:"";position:absolute;left:32%;top:8%;width:36%;height:19%;border-radius:48% 52% 47% 53% / 44% 56% 44% 56%;background:rgba(245,239,230,.74);box-shadow:0 0 0 9999px rgba(245,239,230,.08);filter:blur(14px)}
   a{color:inherit}
   .wrap{width:min(1160px,100% - 32px);margin-inline:auto}
   .serif,h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400}
@@ -35,14 +37,24 @@
 
   /* nav */
   header{position:sticky;top:0;z-index:30;background:rgba(247,241,230,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
   .logo{display:inline-flex;flex-direction:column;text-decoration:none;font-weight:300;color:#58565A;line-height:1}
-  .logo span{font-size:1.75rem}
-  .logo::after{content:"";width:2.4rem;height:2px;background:var(--pea);margin-top:.4rem}
+  .logo .brand{display:inline-flex;align-items:flex-end;white-space:nowrap;font-size:clamp(1.45rem,2.2vw,1.75rem);letter-spacing:-.04em}
+  .logo .brand-so{display:inline-block}
+  .logo .tea-t{position:relative;display:inline-flex;align-items:flex-end;justify-content:center;width:.5em;height:1.1em;margin:0 .04em;transform:translateY(.02em)}
+  .logo .tea-t .leaf{position:absolute;top:-.45em;display:block;width:.42em;height:.7em;background:linear-gradient(135deg,#7ea36b,#b8d38b);border-radius:75% 0 75% 0;box-shadow:inset -1px -1px 0 rgba(255,255,255,.25);transform-origin:bottom center;animation:sprout 1.1s ease-out 0s 1 normal both}
+  .logo .tea-t .leaf-left{left:0;transform:rotate(-38deg) scale(.7)}
+  .logo .tea-t .leaf-right{right:0;transform:rotate(38deg) scale(.7);animation-delay:.14s}
+  .logo .tea-t::before{content:"";position:absolute;left:50%;top:-.18em;width:2px;height:1.1em;background:currentColor;border-radius:99px;transform:translateX(-50%);animation:stem-grow .7s ease-out .05s both}
+  .logo .tea-t::after{content:"";position:absolute;left:50%;top:-.1em;width:.14em;height:.14em;border-radius:50%;background:rgba(94,116,69,.7);transform:translateX(-50%);box-shadow:0 0 0 2px rgba(94,116,69,.08)}
+  .logo::after{content:"";width:2.4rem;height:2px;background:var(--pea);margin-top:.5rem}
   .navlinks{display:flex;gap:26px;align-items:center;font-size:.93rem}
   .navlinks a{text-decoration:none;color:var(--muted)}
   .navlinks a:hover{color:var(--ink)}
-  @media(max-width:760px){.navlinks a:not(.btn){display:none}}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none}.nav{gap:10px}.logo::after{width:2rem}}
+  @media(max-width:560px){nav{padding:10px 0}.logo .brand{font-size:1.35rem}.logo::after{width:1.7rem;margin-top:.38rem}.navlinks{gap:8px}.navlinks .btn.sm{padding:8px 14px;font-size:.8rem}}
+  @keyframes stem-grow{from{height:0;opacity:0}to{height:1.1em;opacity:1}}
+  @keyframes sprout{0%{opacity:0;transform:scale(.2) rotate(0deg)}55%{opacity:1;transform:scale(1.08) rotate(-10deg)}100%{opacity:1;transform:scale(1) rotate(-22deg)}}
 
   .btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:600;text-decoration:none;padding:14px 26px;border-radius:99px;background:var(--ink);color:var(--milk);transition:transform .2s,background .2s}
   .btn:hover{transform:translateY(-2px);background:var(--rooibos)}
@@ -192,11 +204,11 @@
 </head>
 <body>
 
-<div class="bar">Preorders are open — <b>the first 100 customers get 30% off</b> their first order.</div>
+<div class="bar">Preorders are open — <b>30% off first orders</b> while we prepare launch.</div>
 
 <header>
   <nav class="wrap" aria-label="Main">
-    <a class="logo" href="#top" aria-label="so tea home"><span>so tea</span></a>
+    <a class="logo" href="#top" aria-label="so tea home"><span class="brand"><span class="brand-so">so</span><span class="tea-t"><span class="leaf leaf-left"></span><span class="leaf leaf-right"></span>t</span>ea</span></a>
     <div class="navlinks">
       <a href="#story">Our story</a>
       <a href="#mofa">MOFA fabric</a>
@@ -218,15 +230,15 @@
         <p class="lede">Luxury underwear and loungewear made with MOFA fabric technology, for slow mornings, long days and every moment you want to feel clean, calm and at home in your own body.</p>
         <div class="offer">
           <a href="#preorder" class="btn" data-cta="hero">Reserve yours — 30% off</a>
-          <span class="pill">Founding 100 · <b>30% off</b></span>
+          <span class="pill">Preorder check · <b>30% off</b></span>
         </div>
         <div class="progress" aria-live="polite">
-          <small><span id="claimed-label">Founding spots claimed</span><span id="claimed-count"></span></small>
+          <small><span id="claimed-label">Preorders received</span><span id="claimed-count"></span></small>
           <div class="track"><div class="fill" id="fill"></div></div>
         </div>
       </div>
       <div class="hero-imgs reveal">
-        <img src="images/lounge.jpg" alt="Man relaxing on a sofa in an amber so tea lounge set with a glass teapot">
+        <img class="face-hidden" src="images/lounge.jpg" alt="Man relaxing on a sofa in an amber so tea lounge set with a glass teapot">
         <img src="images/waistband.jpg" alt="Close-up of a pale green so tea waistband above linen trousers">
         <img src="images/rooibos-product.jpg" alt="Rooibos-red so tea trunk with a blush waistband">
       </div>
@@ -245,7 +257,7 @@
   <!-- STORY -->
   <section id="story">
     <div class="wrap story-grid">
-      <img class="reveal" src="images/matcha-model.jpg" alt="Man resting on a bed in matcha-green so tea trunks and a cream knit cardigan" loading="lazy">
+      <img class="reveal face-hidden" src="images/matcha-model.jpg" alt="Man resting on a bed in matcha-green so tea trunks and a cream knit cardigan" loading="lazy">
       <div class="story reveal">
         <p class="eyebrow">Our story</p>
         <blockquote>Personal hygiene isn’t just about being clean. It’s about comfort, confidence, and feeling good in your own body.</blockquote>
@@ -310,10 +322,10 @@
         <p>Soft light. A warm cup. Nowhere to be just yet.</p>
       </div>
       <div class="gallery">
-        <figure class="reveal"><img src="images/earlgrey-model.jpg" alt="Man by a sunlit window in earl grey so tea trunks" loading="lazy"><figcaption>Earl Grey</figcaption></figure>
-        <figure class="reveal"><img src="images/matcha-model.jpg" alt="Man relaxing in bed in matcha so tea trunks" loading="lazy"><figcaption>Matcha</figcaption></figure>
-        <figure class="reveal"><img src="images/rooibos-model.jpg" alt="Man seated in a cream tee and rooibos so tea trunks" loading="lazy"><figcaption>Rooibos</figcaption></figure>
-        <figure class="reveal"><img src="images/chamomile-model.jpg" alt="Man stretching in bed in chamomile yellow so tea trunks" loading="lazy"><figcaption>Chamomile</figcaption></figure>
+        <figure class="reveal"><img class="face-hidden" src="images/earlgrey-model.jpg" alt="Man by a sunlit window in earl grey so tea trunks" loading="lazy"><figcaption>Earl Grey</figcaption></figure>
+        <figure class="reveal"><img class="face-hidden" src="images/matcha-model.jpg" alt="Man relaxing in bed in matcha so tea trunks" loading="lazy"><figcaption>Matcha</figcaption></figure>
+        <figure class="reveal"><img class="face-hidden" src="images/rooibos-model.jpg" alt="Man seated in a cream tee and rooibos so tea trunks" loading="lazy"><figcaption>Rooibos</figcaption></figure>
+        <figure class="reveal"><img class="face-hidden" src="images/chamomile-model.jpg" alt="Man stretching in bed in chamomile yellow so tea trunks" loading="lazy"><figcaption>Chamomile</figcaption></figure>
       </div>
     </div>
   </section>
@@ -324,7 +336,7 @@
       <div class="head reveal">
         <p class="eyebrow">The Tea Collection</p>
         <h2>Six blends. Choose your cup.</h2>
-        <p>Founding prices shown. Reserve now and pay nothing until your order is ready to ship.</p>
+        <p>Singles from $29. Bundles of 3 from $69. Reserve now and pay nothing until your order is ready to ship.</p>
       </div>
       <div class="c-grid" id="teas"></div>
     </div>
@@ -337,9 +349,9 @@
         <div class="po-img" role="img" aria-label="so tea trunks folded on linen with loose-leaf tea"></div>
         <div class="po-form">
           <div id="po-fields">
-            <p class="eyebrow">Founding 100</p>
+            <p class="eyebrow">Preorder check</p>
             <h2>Reserve yours at 30% off.</h2>
-            <p>No payment today. We’ll email you before launch to confirm your order and lock in your founding price.</p>
+            <p>No payment today. We’ll email you before launch to confirm your order and lock in your preorder price.</p>
             <!--
               To collect real responses, create a free form at https://formspree.io
               and replace YOUR_FORM_ID below. Until then, entries are logged in the browser only.
@@ -356,7 +368,10 @@
               <div class="row">
                 <div><label for="product">Piece</label>
                   <select id="product" name="product">
-                    <option>Trunk</option><option>Boxer brief</option><option>Lounge set</option><option>Mixed 3-pack</option>
+                    <option value="Trunk">Trunk — $29</option>
+                    <option value="Boxer brief">Boxer brief — $29</option>
+                    <option value="Lounge set">Lounge set — $69</option>
+                    <option value="Mixed 3-pack">Bundle of 3 — $69</option>
                   </select></div>
                 <div><label for="size">Size</label>
                   <select id="size" name="size"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option></select></div>
@@ -368,7 +383,7 @@
           </div>
           <div class="done" id="done" aria-live="polite">
             <h3>You’re on the list.</h3>
-            <p>Thank you for being one of our first. Your founding 30% off is reserved, and we’ll be in touch before launch. Go and pour yourself a cup.</p>
+            <p>Thank you for reserving. Your 30% off preorder is saved, and we’ll be in touch before launch. Go and pour yourself a cup.</p>
             <p style="margin-top:18px"><a class="btn ghost" id="share" href="#">Share with a friend</a></p>
           </div>
         </div>
@@ -381,10 +396,10 @@
     <div class="wrap">
       <div class="head c reveal"><p class="eyebrow">Questions</p><h2>Before you pour.</h2></div>
       <div class="faq">
-        <details><summary>Do I pay anything now?</summary><p>No. Reserving is free. Before launch we’ll email you a link to confirm your order at your founding price.</p></details>
-        <details><summary>How does the 30% off work?</summary><p>The first 100 people to reserve get 30% off their first order. It’s tied to the email address you reserve with.</p></details>
+        <details><summary>Do I pay anything now?</summary><p>No. Reserving is free. Before launch we’ll email you a link to confirm your order at your preorder price.</p></details>
+        <details><summary>How does the 30% off work?</summary><p>Preorder customers get 30% off their first order. It’s tied to the email address you reserve with.</p></details>
         <details><summary>What is MOFA technology?</summary><p>MOFA is the fabric technology behind every so tea piece. It’s built into a premium, breathable knit to help you stay fresh and comfortable all day.</p></details>
-        <details><summary>When will orders ship?</summary><p>We’re finalising production now. Founding members will be the first to hear our launch date and the first to receive their orders.</p></details>
+        <details><summary>When will orders ship?</summary><p>We’re finalising production now. We’ll email preorder customers with launch timing and shipping updates.</p></details>
         <details><summary>How do I care for so tea?</summary><p>Wash cool at 30°C with a gentle detergent, lay flat to dry, and skip the tumble dryer. Treat it like good tea: gently.</p></details>
       </div>
     </div>
@@ -394,7 +409,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="logo" href="#top"><span>so tea</span></a>
+    <a class="logo" href="#top" aria-label="so tea home"><span class="brand"><span class="brand-so">so</span><span class="tea-t"><span class="leaf leaf-left"></span><span class="leaf leaf-right"></span>t</span>ea</span></a>
     <span>© <span id="yr"></span> so tea · Fresh, soft, steeped in comfort.</span>
     <a href="mailto:hello@sotea.example">hello@sotea.example</a>
   </div>
@@ -404,9 +419,9 @@
 
 <script>
   /* ============ SETTINGS — edit these ============ */
-  const SPOTS_TOTAL   = 100;
-  const SPOTS_CLAIMED = 0;   // update by hand as real reservations come in
-  const FULL_PRICE    = { "Trunk": 32, "Boxer brief": 34, "Lounge set": 89, "Mixed 3-pack": 85 };
+  const PREORDER_TOTAL   = 100;
+  const PREORDER_COUNT   = 0;   // update by hand as real reservations come in
+  const FULL_PRICE       = { "Trunk": 29, "Boxer brief": 29, "Lounge set": 69, "Mixed 3-pack": 69 };
   /* =============================================== */
 
   const teas = [
@@ -426,7 +441,7 @@
         <h3>${t.name}</h3>
         <p class="notes">${t.notes}</p>
         <p>${t.desc}</p>
-        <div class="price"><s>£${FULL_PRICE.Trunk}</s><b>£${off(FULL_PRICE.Trunk)}</b><em>−30%</em></div>
+        <div class="price"><s>$${FULL_PRICE.Trunk}</s><b>$${off(FULL_PRICE.Trunk)}</b><em>−30%</em></div>
         <button class="pick" data-tea="${t.name}" data-cta="card">Reserve ${t.name}</button>
       </div>
     </article>`).join("");
@@ -443,11 +458,11 @@
     setTimeout(() => document.getElementById("name").focus({preventScroll:true}), 600);
   });
 
-  // spots progress
-  const claimed = Math.min(SPOTS_CLAIMED, SPOTS_TOTAL);
-  document.getElementById("claimed-count").textContent = `${claimed} / ${SPOTS_TOTAL}`;
-  if(claimed === 0) document.getElementById("claimed-label").textContent = "Founding spots — be one of the first";
-  setTimeout(() => document.getElementById("fill").style.width = Math.max(claimed/SPOTS_TOTAL*100, 2) + "%", 300);
+  // preorder progress
+  const claimed = Math.min(PREORDER_COUNT, PREORDER_TOTAL);
+  document.getElementById("claimed-count").textContent = `${claimed} / ${PREORDER_TOTAL}`;
+  if(claimed === 0) document.getElementById("claimed-label").textContent = "Preorders received";
+  setTimeout(() => document.getElementById("fill").style.width = Math.max(claimed/PREORDER_TOTAL*100, 2) + "%", 300);
 
   // simple demand-validation tracking (works with Plausible / GA4 if you add them)
   const params = new URLSearchParams(location.search);
@@ -466,7 +481,7 @@
     e.preventDefault();
     const data = new FormData(form);
     const p = data.get("product");
-    data.append("founding_price", "£" + off(FULL_PRICE[p]));
+    data.append("preorder_price", "$" + off(FULL_PRICE[p]));
     track("preorder", {colour:data.get("colour"), product:p, size:data.get("size")});
     if(!form.action.includes("YOUR_FORM_ID")){
       try{ await fetch(form.action,{method:"POST",body:data,headers:{Accept:"application/json"}}); }catch(err){}
@@ -479,7 +494,7 @@
 
   document.getElementById("share").addEventListener("click", e => {
     e.preventDefault();
-    const d = {title:"so tea", text:"so tea preorders are open — the first 100 get 30% off.", url:location.href};
+    const d = {title:"so tea", text:"so tea preorders are open — save 30% off your first order.", url:location.href};
     if(navigator.share) navigator.share(d).catch(()=>{});
     else navigator.clipboard?.writeText(location.href).then(() => e.target.textContent = "Link copied");
   });
